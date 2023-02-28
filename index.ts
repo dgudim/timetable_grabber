@@ -190,7 +190,7 @@ if (timetable_raw) {
             for (const rem_subject of removed) {
                 await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
                     method: 'POST',
-                    body: `${rem_entry[1]} | ${rem_entry[4]} removed`,
+                    body: `${stringify(rem_subject)} removed`,
                     headers: { 'Tags': 'orange_square', 'Title': `${day} timetable changed` }
                 });
                 console.log(`added ${stringify(rem_subject)}`);
@@ -199,7 +199,7 @@ if (timetable_raw) {
             for (const add_subject of added) {
                 await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
                     method: 'POST',
-                    body: `${add_entry[1]} | ${add_entry[4]} added`,
+                    body: `${stringify(add_subject)} added`,
                     headers: { 'Tags': 'orange_square', 'Title': `${day} timetable changed` }
                 });
                 console.log(`added ${stringify(add_subject)}`);
