@@ -1,0 +1,99 @@
+"\n\n\n\r\n
+\r\n
+\r\n
+\r\n
+\r\n
+Time: (1)- first part of the lecture (first 45 min.), (2) - second part of the lecture (second 45 min.), if not indicated - whole lecture.
+\nWeek: 1 - the lecture takes place on the 1st week, 2 - the lecture takes place on the 2d week, if not indicated, the lecture takes place weekly.
+\nSubgroup: 0 - all, 1 - 1st subgroup, 2 - 2nd subgroup, 3 - 3rd subgroup.
+\nType: type of lecture (VĮ – video record of the lecture, VK – online lecture, SN – live streaming of lecture)
+
+\r\n
+\r\n
+\r\n
+\r\n
+\r\n
+\r\n \r\n \r\n \r\n
+\r\n
+2022-2023 AY spring semester lecture schedule
+\r\n
+2023.02.06 - 2023.05.22
+Monday
+\n\n
+\n\n\n\n\n\n\n\n\n\n
+Lecture	Time	Week	Subgroup	Subject	Auditorium	Lecturer	Type
+3	12:10-13:45	1	0	Discrete Mathematics 2 (FMMMB16202)	
+SRK-I 201Auditorium SRK-I 201: Saulėtekio al. 11 - Saulėtekio Campus - First building 201 auditorium
+Assoc Prof Dr. Olga Suboč	Lectures
+4	14:30-16:05	1	0	Philosophy (KIFSB17109)	
+SRK-I 201Auditorium SRK-I 201: Saulėtekio al. 11 - Saulėtekio Campus - First building 201 auditorium
+Dr. Nerijus Stasiulis	Lectures
+4	14:30-16:05	2	0	Philosophy (KIFSB17109)	
+SRK-I 624Auditorium SRK-I 624: Saulėtekio al. 11 - Saulėtekio Campus - First building 624 auditorium
+Dr. Nerijus Stasiulis	Practical exercises (practical work)
+5	16:20-17:55	2	0	Management (VVVKB17159)	
+SRK-I 624Auditorium SRK-I 624: Saulėtekio al. 11 - Saulėtekio Campus - First building 624 auditorium
+Dr. Jurga Vestertė	Practical exercises (practical work)
+\n\n
+Tuesday
+\n\n
+\n\n\n\n\n\n\n
+Lecture	Time	Week	Subgroup	Subject	Auditorium	Lecturer	Type
+3	12:10-13:45	-	0	Computer Architecture (ELESB20203)	
+SRA-I 20Auditorium SRA-I 20: Saulėtekio al. 11 - Saulėtekio Campus - First auditorium building 20 auditorium
+Dr. Vytautas Abromavičius	Lectures
+\n\n
+Wednesday
+\n\n
+\n\n\n\n\n\n\n\n\n\n
+Lecture	Time	Week	Subgroup	Subject	Auditorium	Lecturer	Type
+1	8:30-10:05	-	0	Object-Oriented Programming (with course work) (FMITB21201)	
+SRL-I 420Auditorium SRL-I 420: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 420 auditorium
+Artūr Radzivilov	Laboratory work (laboratory works)
+2	10:20-11:55	-	0	Discrete Mathematics 2 (FMMMB16202)	
+SRK-I 201Auditorium SRK-I 201: Saulėtekio al. 11 - Saulėtekio Campus - First building 201 auditorium
+Assoc Prof Dr. Olga Suboč	Lectures
+3	12:10-13:45	-	0	Object-Oriented Programming (with course work) (FMITB21201)	
+SRK-I 201Auditorium SRK-I 201: Saulėtekio al. 11 - Saulėtekio Campus - First building 201 auditorium
+Assoc Prof Dr. Mindaugas Rybokas	Lectures
+4	14:30-16:05	-	0	Discrete Mathematics 2 (FMMMB16202)	
+SRK-I 203Auditorium SRK-I 203: Saulėtekio al. 11 - Saulėtekio Campus - First building 203 auditorium
+Assoc Prof Dr. Olga Suboč	Practical exercises (practical work)
+\n\n
+Thursday
+\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n
+Lecture	Time	Week	Subgroup	Subject	Auditorium	Lecturer	Type
+1	8:30-10:05	2	2	Speciality English Language (KIUSB17123)	
+SRL-I 422aAuditorium SRL-I 422a: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 422a auditorium
+Nicholas Edward Rickard	Practical exercises (practical work)
+2	10:20-11:55	-	1	Speciality English Language (KIUSB17123)	
+SRL-I 422aAuditorium SRL-I 422a: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 422a auditorium
+Nicholas Edward Rickard	Practical exercises (practical work)
+3	12:10-13:45	1	2	Speciality English Language (KIUSB17123)	
+SRL-I 422aAuditorium SRL-I 422a: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 422a auditorium
+Nicholas Edward Rickard	Practical exercises (practical work)
+4	14:30-16:05	1	0	Computer Architecture (ELESB20203)	
+SRA-I A01Auditorium SRA-I A01: Saulėtekio al. 11 - Saulėtekio Campus - First auditorium building A01 auditorium
+Dr. Vytautas Abromavičius	Lectures
+4	14:30-16:05	2	0	Management (VVVKB17159)	
+SRA-I A05Auditorium SRA-I A05: Saulėtekio al. 11 - Saulėtekio Campus - First auditorium building A05 auditorium
+Dr. Jurga Vestertė	Lectures
+5	16:20-17:55	2	0	Management (VVVKB17159)	
+SRA-I A05Auditorium SRA-I A05: Saulėtekio al. 11 - Saulėtekio Campus - First auditorium building A05 auditorium
+Dr. Jurga Vestertė	Lectures
+\n\n
+Friday
+\n\n
+\n\n\n\n\n\n\n\n
+Lecture	Time	Week	Subgroup	Subject	Auditorium	Lecturer	Type
+2	10:20-11:55	1	0	Practice (FMITB16202)	
+SRL-I 427Auditorium SRL-I 427: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 427 auditorium
+Renata Karbauskienė	Practical exercises (practical work)
+3	12:10-13:45	1	0	Computer Architecture (ELESB20203)	
+SRL-I 427Auditorium SRL-I 427: Saulėtekio al. 11 - Saulėtekio Campus - First laboratory building 427 auditorium
+Dr. Vytautas Abromavičius	Laboratory work (laboratory works)
+\n\n
+\r\n
+\r\n
+\r\n\n\n\n\n\n\n\n\n"
