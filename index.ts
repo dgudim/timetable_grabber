@@ -102,32 +102,35 @@ if (fs.existsSync("./timetable.txt")) {
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-if(timetable) {
-    fs.writeFileSync('./timetable.txt', timetable);
+if (timetable) {
 
     const searchStr = "Lecture\tTime\tWeek\tSubgroup\tSubject\tAuditorium\tLecturer\tType";
     const indexes = [...timetable.matchAll(new RegExp(searchStr, 'gi'))].map(a => a.index);
 
     let i: number = 0;
-    for(const index of indexes) {
+    let timetable_map = new Map;
+    for (const index of indexes) {
         const last_index = timetable.indexOf("\\n", index);
         const sub_timetable = timetable.substring(index! + searchStr.length, last_index).trim();
         const sub_timetable_entries_sep = sub_timetable.split("\n");
         let sub_timetable_entries = [];
-        for(let i = 0; i < sub_timetable_entries_sep.length; i+= 3) {
+        for (let i = 0; i < sub_timetable_entries_sep.length; i += 3) {
             sub_timetable_entries.push(
-                sub_timetable_entries_sep[i].trim() + "\t" + 
-                sub_timetable_entries_sep[i + 1].trim() + "\t" + 
+                sub_timetable_entries_sep[i].trim() + "\t" +
+                sub_timetable_entries_sep[i + 1].trim() + "\t" +
                 sub_timetable_entries_sep[i + 2].trim());
         }
         let sub_timetable_subjects = [];
-        for(const entry of sub_timetable_entries) {
+        for (const entry of sub_timetable_entries) {
             sub_timetable_subjects.push(entry.split("\t"));
         }
         console.log(days[i]);
         console.log(sub_timetable_subjects);
+        timetable_map.set(days[i], sub_timetable_subjects);
         i++;
     }
+
+    fs.writeFileSync('./timetable.txt', JSON.stringify(timetable_map));
 
 }
 
