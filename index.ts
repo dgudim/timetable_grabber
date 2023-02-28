@@ -1,10 +1,17 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 import fs from "fs";
+import path from "path";
 
-import creds from "./creds.json" assert {"type": "json"};
+import notifier from 'node-notifier';
 
 let browser: Browser;
 let page: Page;
+
+const timetable_path = path.resolve('./timetable.txt');
+const icon_path = path.resolve('./icon.png');
+const cookies_path = path.resolve('./cookies.json');
+
+import creds from "./creds.json" assert {"type": "json"};
 
 function sleep(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,7 +30,7 @@ page = await browser.newPage();
 await page.setViewport({ width: 1920, height: 1080 });
 
 // load cookies
-if (fs.existsSync("./cookies.json")) {
+if (fs.existsSync(cookies_path)) {
     const cookiesString = fs.readFileSync('./cookies.json').toString();
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
@@ -66,7 +73,7 @@ if (await page.evaluate(() => document.querySelector("#acceptance"))) {
 
 // save cookies
 const cookies = await page.cookies();
-fs.writeFileSync('./cookies.json', JSON.stringify(cookies, null, 2));
+fs.writeFileSync(cookies_path, JSON.stringify(cookies, null, 2));
 console.log("Saved cookies");
 
 // wait for main page to load
@@ -104,6 +111,20 @@ function stringify(obj: any): string {
 
 function objectsEqual(obj1: any, obj2: any): boolean {
     return stringify(obj1) === stringify(obj2);
+}
+
+async function notify(title: string, body: string, tags: string) {
+    await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
+        method: 'POST',
+        body: body,
+        headers: { 'Tags': tags, 'Title': title }
+    });
+    console.log(`${title}: ${body}`);
+    notifier.notify({
+        title: title,
+        message: body,
+        icon: icon_path
+    });
 }
 
 if (timetable_raw) {
@@ -167,9 +188,9 @@ if (timetable_raw) {
         i++;
     }
 
-    if (fs.existsSync("./timetable.txt")) {
+    if (fs.existsSync(timetable_path)) {
 
-        const timetable_map_old: Map<string, Subject[]> = new Map(JSON.parse(fs.readFileSync("./timetable.txt").toString()));
+        const timetable_map_old: Map<string, Subject[]> = new Map(JSON.parse(fs.readFileSync(timetable_path).toString()));
 
         let changed: number = 0;
 
@@ -188,34 +209,18 @@ if (timetable_raw) {
             changed += removed.length + added.length;
 
             for (const rem_subject of removed) {
-                await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
-                    method: 'POST',
-                    body: `${stringify(rem_subject)} removed`,
-                    headers: { 'Tags': 'orange_square', 'Title': `${day} timetable changed` }
-                });
-                console.log(`added ${stringify(rem_subject)}`);
+                await notify(`${day} timetable changed`, `${stringify(rem_subject)} removed`, "orange_square");
             }
 
             for (const add_subject of added) {
-                await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
-                    method: 'POST',
-                    body: `${stringify(add_subject)} added`,
-                    headers: { 'Tags': 'orange_square', 'Title': `${day} timetable changed` }
-                });
-                console.log(`added ${stringify(add_subject)}`);
+                await notify(`${day} timetable changed`, `${stringify(add_subject)} added`, "orange_square");
             }
         }
 
-        await fetch('https://ntfy.sh/mano_vilniustech_timetable_changed', {
-            method: 'POST',
-            body: `${changed} entries changed`,
-            headers: { 'Tags': 'green_square', 'Title': 'Timetable scrape done' }
-        })
-        console.log(`Scrape done, ${changed} entries changed`);
-
+        await notify('Timetable scrape done', `${changed} entries changed`, "green_square");
     }
 
-    fs.writeFileSync('./timetable.txt', JSON.stringify(Array.from(timetable_map.entries())));
+    fs.writeFileSync(timetable_path, JSON.stringify(Array.from(timetable_map.entries())));
 }
 
 console.log("DONE");
