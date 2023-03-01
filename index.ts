@@ -194,26 +194,44 @@ if (timetable_raw) {
 
         let changed: number = 0;
 
+        const index_name_filter = function (second_arr: Subject[]) {
+            return ((sub1: Subject) => second_arr.some((sub2: Subject) =>
+                sub1.index == sub2.index && sub1.name_and_type == sub2.name_and_type));
+        }
+
+        const equals_filter = function (second_arr: Subject[]) {
+            return ((sub1: Subject) => !second_arr.some(sub2 => objectsEqual(sub1, sub2)));
+        }
+
         for (const day of days) {
             const old_subjects = timetable_map_old.get(day) || [];
             const new_subjects = timetable_map.get(day) || [];
 
-            const removed = old_subjects.filter((old_sub: Subject) => !new_subjects.some(new_sub => objectsEqual(old_sub, new_sub)));
-            const added = new_subjects.filter((new_sub: Subject) => !old_subjects.some(old_sub => objectsEqual(old_sub, new_sub)));
+            let removed = old_subjects.filter(equals_filter(new_subjects));
+            let added = new_subjects.filter(equals_filter(old_subjects));
 
             if (removed.length == 0 && added.length == 0) {
                 console.log(`No changes on ${day}`);
                 continue;
             }
 
-            changed += removed.length + added.length;
+            const changed_subjects = removed.filter(index_name_filter(added))
+
+            removed = removed.filter(index_name_filter(changed_subjects));
+            added = added.filter(index_name_filter(changed_subjects));
+
+            changed += removed.length + added.length + changed_subjects.length;
+
+            for (const ch_subject of changed_subjects) {
+                await notify(`${day} timetable changed`, `${ch_subject.time} | ${ch_subject.name_and_type} changed`, "orange_square");
+            }
 
             for (const rem_subject of removed) {
-                await notify(`${day} timetable changed`, `${stringify(rem_subject)} removed`, "orange_square");
+                await notify(`${day} timetable changed`, `${rem_subject.time} | ${rem_subject.name_and_type} removed`, "orange_square");
             }
 
             for (const add_subject of added) {
-                await notify(`${day} timetable changed`, `${stringify(add_subject)} added`, "orange_square");
+                await notify(`${day} timetable changed`, `${add_subject.time} | ${add_subject.name_and_type} added`, "orange_square");
             }
         }
 
