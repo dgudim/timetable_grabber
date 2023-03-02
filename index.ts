@@ -1,4 +1,4 @@
-import puppeteer, { Browser, Page } from "puppeteer";
+import puppeteer, { Browser, Page } from "puppeteer-core";
 import fs from "fs";
 import path from "path";
 
@@ -23,6 +23,8 @@ process.on('uncaughtException', (error, origin) => {
 
 console.log("Starting puppeteer");
 browser = await puppeteer.launch({
+    executablePath: '/usr/bin/chromium-browser',
+    headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
 });
 
