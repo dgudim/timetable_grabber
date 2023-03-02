@@ -23,7 +23,7 @@ process.on('uncaughtException', (error, origin) => {
 
 console.log("Starting puppeteer");
 browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
 });
 
 page = await browser.newPage();
