@@ -196,9 +196,9 @@ if (timetable_raw) {
 
         let changed: number = 0;
 
-        const index_name_filter = function (second_arr: Subject[]) {
-            return ((sub1: Subject) => second_arr.some((sub2: Subject) =>
-                sub1.index == sub2.index && sub1.name_and_type == sub2.name_and_type));
+        const index_name_filter = function (second_arr: Subject[], include: boolean) {
+            return ((sub1: Subject) => (second_arr.some((sub2: Subject) =>
+                sub1.index == sub2.index && sub1.name_and_type == sub2.name_and_type)) === include);
         }
 
         const equals_filter = function (second_arr: Subject[]) {
@@ -217,10 +217,12 @@ if (timetable_raw) {
                 continue;
             }
 
-            const changed_subjects = removed.filter(index_name_filter(added))
+            // elements both in removed and added
+            const changed_subjects = removed.filter(index_name_filter(added, true))
 
-            removed = removed.filter(index_name_filter(changed_subjects));
-            added = added.filter(index_name_filter(changed_subjects));
+            // removed changed elements
+            removed = removed.filter(index_name_filter(changed_subjects, false));
+            added = added.filter(index_name_filter(changed_subjects, false));
 
             changed += removed.length + added.length + changed_subjects.length;
 
