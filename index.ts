@@ -79,10 +79,20 @@ fs.writeFileSync(cookies_path, JSON.stringify(cookies, null, 2));
 console.log("Saved cookies");
 
 // wait for main page to load
-await page.waitForSelector(".week");
+try {
+    await page.waitForSelector(".week");
+    const week = await page.evaluate(() => document.querySelector(".week")?.textContent?.trim().replace("week ", ""));
+    console.log(`Current week: ${week}`);
+} catch (error) {
+    console.log(`Error getting current week, day off? ${error}`);
 
-const week = await page.evaluate(() => document.querySelector(".week")?.textContent?.trim().replace("week ", ""));
-console.log(`Current week: ${week}`);
+    try {
+        await page.waitForSelector(".lecture_time");
+    } catch (error2) {
+        console.log(`Something is wront with the page, not proceeding ${error2}`);
+        process.exit(34);
+    }
+}
 
 // call timetable endpoint
 await page.goto("https://mano.vilniustech.lt/timetable/site/my-timetable");
