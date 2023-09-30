@@ -22,11 +22,21 @@ process.on('uncaughtException', (error, origin) => {
 });
 
 console.log("Starting puppeteer");
-browser = await puppeteer.launch({
-    executablePath: '/usr/bin/chromium-browser',
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
-});
+
+executables = ['/usr/bin/chromium-browser', '/usr/bin/chromium']
+
+for (const executable of executables) {
+    try {
+        browser = await puppeteer.launch({
+            executablePath: executable,
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
+        });
+        break;
+    } catch (error) {
+        console.log(`${executable} not found, thying next`);
+    }
+}
 
 page = await browser.newPage();
 await page.setViewport({ width: 1920, height: 1080 });
