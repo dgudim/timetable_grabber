@@ -34,7 +34,7 @@ for (const executable of executables) {
         });
         break;
     } catch (error) {
-        console.log(`${executable} not found, thying next`);
+        console.log(`${executable} not found, trying next`);
     }
 }
 
