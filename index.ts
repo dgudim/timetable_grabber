@@ -23,7 +23,7 @@ process.on('uncaughtException', (error, origin) => {
 
 console.log("Starting puppeteer");
 
-executables = ['/usr/bin/chromium-browser', '/usr/bin/chromium']
+const executables = ['/usr/bin/chromium-browser', '/usr/bin/chromium']
 
 for (const executable of executables) {
     try {
