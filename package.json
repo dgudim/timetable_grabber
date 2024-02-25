@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "node-notifier": "^10.0.1",
-    "puppeteer-core": "^21.3.6"
+    "puppeteer-core": "^22.2.0"
   },
   "type": "module",
   "devDependencies": {
-    "@types/node-notifier": "^8.0.3"
+    "@types/node-notifier": "^8.0.5"
   }
 }
