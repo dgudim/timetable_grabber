@@ -2,8 +2,6 @@ import puppeteer, { type Browser } from "puppeteer-core";
 import fs from "fs";
 import path from "path";
 
-import notifier from "node-notifier";
-
 let browser: Browser | null = null;
 
 const timetable_path = path.resolve("./timetable.txt");
@@ -145,11 +143,6 @@ async function notify(title: string, body: string, tags: string) {
         headers: { Tags: tags, Title: title },
     });
     console.log(`${title}: ${body}`);
-    notifier.notify({
-        title: title,
-        message: body,
-        icon: icon_path,
-    });
 }
 
 if (timetable_raw) {
